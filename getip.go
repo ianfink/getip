@@ -1,5 +1,6 @@
 /* 
- * Copyright (C) 2025 Ian M. Fink
+ * Copyright (C) 2025 Ian M. Fink.
+ * All rights reserved.
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -54,8 +55,12 @@ const theURL = "http://checkip.dyndns.org/"
  */
 
 func GetIpFromString (s string) string {
+	// Example s = "<html><head><title>Current IP Check</title>" +
+	//	"</head><body>Current IP Address: 34.138.201.253</body></html>"
+
 	s1 := strings.Split(s, "<body>")
 	s2 := strings.Split(s1[1], "</body>")
+
 	return s2[0]
 } /* GetIpFromString */
 
@@ -73,11 +78,9 @@ func main() {
 		panic(err)
 	}
 
-	// tmp = "<html><head><title>Current IP Check</title></head><body>Current IP Address: 70.112.240.36</body></html>"
 	tmp := string(theHTML[:])
 
 	fmt.Println(GetIpFromString(strings.ToLower(tmp)))
-//	fmt.Printf("%s\n", GetIpFromString(strings.ToLower(tmp)))
 } /* main */
 
 /**********************************************************************/
