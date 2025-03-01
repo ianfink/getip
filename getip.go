@@ -26,7 +26,7 @@ package main
 import (
 	"fmt"
 	"strings"
-	"io/ioutil"
+	"io"
 	"net/http"
 )
 
@@ -73,7 +73,7 @@ func main() {
 	}
 	defer theResponse.Body.Close()
 
-	theHTML, err := ioutil.ReadAll(theResponse.Body)
+	theHTML, err := io.ReadAll(theResponse.Body)
 	if err != nil {
 		panic(err)
 	}
